@@ -153,7 +153,7 @@
   .zlabel.bad{border-color:#E0645A;} .zlabel.good{border-color:#E8B84B;}
   .zlabel::before{content:""; display:inline-block; width:8px; height:8px; border-radius:2px; margin-right:5px; vertical-align:0;}
   .zlabel.bad::before{background:#E0645A;} .zlabel.good::before{background:#E8B84B;}
-  .z-always, .pitch[data-state="p1"] .z-p1, .pitch[data-state="p2"] .z-p2, .pitch[data-state="p3"] .z-p3, .pitch[data-state="escape"] .z-escape, .pitch[data-state="land"] .z-land, .pitch[data-state="kick"] .zlabel.z-kick, .pitch[data-state="direct"] .zlabel.z-direct, .pitch[data-state="drop"] .zlabel.z-drop{opacity:1;}
+  .z-always, .pitch[data-state="p1"] .z-p1, .pitch[data-state="p2"] .z-p2, .pitch[data-state="p3"] .z-p3, .pitch[data-state="fline"] .z-fline, .pitch[data-state="fdrop"] .z-fdrop, .pitch[data-state="fup"] .z-fup, .pitch[data-state="escape"] .z-escape, .pitch[data-state="land"] .z-land, .pitch[data-state="kick"] .zlabel.z-kick, .pitch[data-state="direct"] .zlabel.z-direct, .pitch[data-state="drop"] .zlabel.z-drop{opacity:1;}
 
   body:not(.show-edit) .edit-toggle{display:none !important;}
   body:not(.show-edit) .coord-panel{display:none !important;}
@@ -274,6 +274,7 @@
         <tr><td>볼 받기</td><td>받을 수 있으면 <b>강하게 콜</b></td></tr>
         <tr><td>잠그기</td><td><b>DM1 "잠가!"</b> 또는 <b>벤치 신호</b> — 후반 5~10분, 1골 차 리드</td></tr>
         <tr><td>막판 공격</td><td>후반 15분 남기고 지고 있을 때</td></tr>
+        <tr><td>프리킥 수비</td><td><b>CB1</b>이 라인 높이·무르는 타이밍 콜 (먼 거리 프리킥)</td></tr>
         <tr><td>코너킥 수비</td><td><b>GK</b>가 잡을 수 있는 볼은 크게 콜하고 나온다</td></tr>
       </table>
     </div>
@@ -753,7 +754,47 @@
 
     <div class="card">
       <h3 style="font-size:16px;">프리킥 수비 — 먼 거리</h3>
-      <p style="margin:0;">코너킥 수비와 <b>동일</b>하다. 지역수비 2명(니어포스트 풀백 · 골문 앞 중앙 CB1) + 대인수비, ST와 반대쪽 윙어는 역습 출구로 남긴다. 걷어낸 뒤에는 <b>빠르게 걷어내고 → 곧바로 라인 올리기.</b> <span class="muted">— 위 '코너킥 수비' 그림 참고</span></p>
+      <p class="muted" style="font-size:14px;">코너킥 수비와 다르다. <b>지역수비 없이 전원 대인수비</b>, 박스 선에 일렬로 섰다가 <b>키커의 도움닫기와 함께 골문 쪽으로 같이 무른다.</b> ST와 반대쪽 윙어는 역습 출구로 남긴다.</p>
+      <div class="split">
+        <div class="pitch-col">
+          <div class="state-btns"><button class="state-btn" data-state="fline">① 라인 설정</button><button class="state-btn" data-state="fdrop">② 도움닫기 → 무르기</button><button class="state-btn" data-state="fup">③ 걷어낸 직후</button><button class="state-btn edit-toggle">✏️ 편집 모드</button></div>
+          <div class="pitch-wrap">
+            <div class="pitch" data-state="fline">
+              <svg class="pitch-svg" viewBox="0 0 600 900" preserveAspectRatio="none"><rect class="pitch-bg" width="600" height="900"/><use href="#pitch-lines"/></svg><div class="edit-grid"></div>
+              <div class="zlabel good z-fline" style="left:50%;top:67%;">라인: 박스 선 바로 앞 일렬</div><div class="zlabel good z-fdrop" style="left:50%;top:67%;">도움닫기 순간 → 같이 무르기</div><div class="zlabel good z-fup" style="left:50%;top:62%;">걷어내면 다 같이 올리기</div>
+<div class="marker" data-fline="50,95" data-fdrop="50,95" data-fup="50,92"><div class="dot">GK</div></div>
+<div class="marker" data-fline="16,82" data-fdrop="21,89" data-fup="16,73"><div class="dot">LB</div></div>
+<div class="marker" data-fline="26,82" data-fdrop="29,89" data-fup="26,73"><div class="dot">LW</div></div>
+<div class="marker" data-fline="36,82" data-fdrop="37,89" data-fup="36,73"><div class="dot">DM1</div></div>
+<div class="marker" data-fline="46,82" data-fdrop="45,89" data-fup="46,73"><div class="dot">CB1</div></div>
+<div class="marker" data-fline="56,82" data-fdrop="55,89" data-fup="56,73"><div class="dot">CB2</div></div>
+<div class="marker" data-fline="66,82" data-fdrop="63,89" data-fup="66,73"><div class="dot">DM2</div></div>
+<div class="marker" data-fline="76,82" data-fdrop="71,89" data-fup="76,73"><div class="dot">CAM</div></div>
+<div class="marker" data-fline="86,82" data-fdrop="79,89" data-fup="86,73"><div class="dot">RB</div></div>
+<div class="marker" data-fline="50,40" data-fdrop="50,40" data-fup="52,38"><div class="dot">ST</div></div>
+<div class="marker" data-fline="80,42" data-fdrop="80,42" data-fup="78,40"><div class="dot">RW</div></div>
+<div class="marker opp" data-fline="24,75" data-fdrop="25,83" data-fup="25,81"><div class="dot">상</div></div>
+<div class="marker opp" data-fline="35,75" data-fdrop="34,83" data-fup="34,81"><div class="dot">상</div></div>
+<div class="marker opp" data-fline="46,75" data-fdrop="43,83" data-fup="43,81"><div class="dot">상</div></div>
+<div class="marker opp" data-fline="57,75" data-fdrop="52,83" data-fup="52,81"><div class="dot">상</div></div>
+<div class="marker opp" data-fline="68,75" data-fdrop="61,83" data-fup="61,81"><div class="dot">상</div></div>
+<div class="marker opp" data-fline="79,75" data-fdrop="70,83" data-fup="70,81"><div class="dot">상</div></div>
+<div class="marker opp" data-fline="50,35" data-fdrop="50,35" data-fup="52,33"><div class="dot">DF</div></div>
+<div class="marker opp" data-fline="80,37" data-fdrop="80,37" data-fup="78,35"><div class="dot">DF</div></div>
+<div class="marker opp" data-fline="40,54" data-fdrop="40,54" data-fup="40,56"><div class="dot">K</div></div>
+<div class="marker bm" data-fline="42,52" data-fdrop="49,78" data-fup="76,43"><div class="dot">볼</div></div>
+            </div>
+            <div class="coord-panel">
+              <div class="coord-head"><span>편집 모드 좌표</span><button class="copy-btn">복사</button></div>
+              <p class="muted" style="font-size:12px;margin:0 0 6px;">마커를 끌어서 놓은 뒤 좌표를 복사해 보내주세요.</p>
+              <pre class="coord-out"></pre>
+            </div>
+          </div>
+          <div class="key"><span><i style="background:var(--marker)"></i>우리 팀</span><span><i style="background:#C8453A;border-color:#fff"></i>상대 팀</span><span><i style="background:var(--accent-2);border-color:#fff"></i>볼</span></div>
+        </div>
+        <div class="info-col"><div class="legend" data-state="fline"><ul><li><b>라인</b><span>페널티박스 선 바로 앞에 일렬로 선다. 킥이 아주 멀면 1~2m 더 앞</span></li><li><b>CB1</b><span>라인 높이를 맞추고 출발 타이밍을 콜한다</span></li><li><b>대인수비</b><span>전원 대인수비 — 내 상대 옆, 골대 쪽에 선다. 지역수비는 없다</span></li><li><b>ST·반대쪽 윙어</b><span>역습 출구로 남는다 — 상대 수비수를 뒤에 묶어둔다</span></li><li><b>GK</b><span>라인과 골문 사이 공간은 GK 영역</span></li></ul></div><div class="legend" data-state="fdrop"><ul><li><b>출발</b><span>키커가 도움닫기를 시작하는 순간 전원 동시에 골문 쪽으로 무른다</span></li><li><b>위치</b><span>무르면서도 항상 내 상대보다 골대 쪽</span></li><li><b>멈춤</b><span>페널티 스팟 높이까지 무르고 거기서 경합</span></li><li><b>이유</b><span>상대는 달려들며 경합한다 — 우리도 같이 움직여야 몸싸움이 대등하다</span></li></ul></div><div class="legend" data-state="fup"><ul><li><b>걷어내기</b><span>멀리, 가능하면 남아있는 ST·윙어 쪽으로</span></li><li><b>라인</b><span>걷어낸 순간 다 같이 올라가 상대가 쓸 공간을 줄인다</span></li><li><b>ST·윙어</b><span>볼을 지켜 동료가 올라올 시간을 번다</span></li></ul></div></div>
+      </div>
+      <div class="callout"><b>오프사이드를 기다리지 않는다</b> — 버티다가 늦게 뛰면 한 발 늦고, 타이밍이 어긋나면 그대로 실점이다. 도움닫기와 함께 <b>미리, 같이</b> 무른다. 무르는 끝은 페널티 스팟 높이.<br><br><span class="muted">단, 잠그기 중에는 ST만 남기고 반대쪽 윙어도 수비 가담 (6번 탭).</span></div>
     </div>
     <div class="setpiece-grid" id="setpiece-grid"></div>
   </section>
